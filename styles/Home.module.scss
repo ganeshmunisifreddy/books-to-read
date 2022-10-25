@@ -1,0 +1,182 @@
+.container {
+  padding: 12px;
+  max-width: 1600px;
+  margin: 48px auto;
+  width: 90%;
+  min-height: 90vh;
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  color: #454545;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-top: 32px;
+}
+
+.search {
+  margin: 64px auto;
+  width: 75%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    padding: 16px 24px;
+    border: none;
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    outline: none;
+  }
+
+  .searchBtn {
+    margin: 0 auto;
+    margin-top: 16px;
+    padding: 12px 48px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+    border: 0;
+    border-radius: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+
+    svg {
+      margin-left: 4px;
+      height: 18px;
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listItem {
+  padding: 12px;
+  width: 16.66%;
+}
+
+.book {
+  padding: 24px 16px;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.1) rotate(3deg);
+    box-shadow: 0 4px 24px #003d9540;
+
+    .wishlistOverlay {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .thumbnail {
+    position: relative;
+    width: 100%;
+    max-width: 180px;
+    aspect-ratio: 1/1.5;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .author {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+    margin-top: 6px;
+    color: #003d95;
+    font-weight: bold;
+  }
+
+  .wishlistOverlay {
+    position: absolute;
+    background: rgb(201 194 251 / 95%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    transform: translateX(75%);
+    opacity: 0;
+  }
+
+}
+
+.addToWishlist {
+  background: #8f00ff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px #003d9540;
+
+  &:hover {
+    transform: scale(1.1) rotate(-6deg);
+    box-shadow: 0 4px 48px #003e9590;
+  }
+}
+
+
+.loading {
+  text-align: center;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 1440px) {
+  .listItem {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .listItem {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .listItem {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 412px) {
+  .listItem {
+    width: 50%;
+  }
+}

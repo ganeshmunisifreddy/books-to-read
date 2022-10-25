@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  color: #bb699b;
+}
+
+.logo {
+  background: hsla(0, 0%, 100%, .5);
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  //color: #8f00ff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  //text-transform: uppercase;
+}
+
+.wishlist {
+  background: hsla(0, 0%, 100%, .5);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #454545;
+
+  svg {
+    margin-right: 4px;
+  }
+}
