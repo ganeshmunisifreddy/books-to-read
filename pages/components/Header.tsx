@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookOpenVariant, Heart } from 'mdi-material-ui';
 import styles from './Header.module.scss';
+import { Button } from '@mui/material';
 
 const Header = () => {
   return (
@@ -8,10 +9,10 @@ const Header = () => {
       <div className={styles.logo}>
         <BookOpenVariant />
       </div>
-      <div className={styles.wishlist}>
+      <Button className={styles.wishlist}>
         <Heart />
         Wishlist
-      </div>
+      </Button>
     </header>
   );
 };

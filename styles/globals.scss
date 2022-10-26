@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
 html,
 body {
   padding: 0;
@@ -17,4 +19,16 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+button {
+  text-transform: capitalize !important;
+  color: inherit !important;
+  line-height: inherit !important;
+
+  &:hover {
+    background-color: #f3f3f3a3 !important;
+    box-shadow: rgb(166 113 179) 0px 8px 48px !important;
+  }
 }

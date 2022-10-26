@@ -5,19 +5,28 @@ import { useState } from 'react';
 import styles from '../styles/Home.module.scss';
 import { BookSearch } from 'mdi-material-ui';
 import Header from './components/Header';
+import { Button } from '@mui/material';
+import { useRouter } from 'next/router';
 
-const Home: NextPage = () => {
-  const [books, setBooks] = useState([]);
-  const [text, setText] = useState('');
+const Home: NextPage = (props: any) => {
+  const [books, setBooks] = useState(props.books);
+  const [text, setText] = useState<string>(props.q);
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+  const { q } = router.query;
 
   const handleSearch = async (e: any) => {
     e.preventDefault();
-    setLoading(true);
-    setBooks([]);
     if (!text) return;
+    router.push(`/?q=${text}`, undefined, { shallow: true });
+    fetchBooks();
+  };
+
+  const fetchBooks = async () => {
+    setLoading(true);
     const res = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${text}`
+      `https://www.googleapis.com/books/v1/volumes?q=${q}`
     );
     const data = await res.json();
     setBooks(data.items);
@@ -36,15 +45,16 @@ const Home: NextPage = () => {
         <form onSubmit={handleSearch} className={styles.search}>
           <input
             type="text"
+            value={text}
             placeholder="Search books..."
             onChange={(e) => {
               setText(e.target.value);
             }}
           />
-          <button type="submit" className={styles.searchBtn}>
+          <Button type="submit" className={styles.searchBtn}>
             Search
             <BookSearch />
-          </button>
+          </Button>
         </form>
         {loading ? (
           <p className={styles.loading}>Loading...</p>
@@ -64,7 +74,7 @@ const Home: NextPage = () => {
                     </div>
                     <div className={styles.author}>{authors.join(', ')}</div>
                     <div className={styles.wishlistOverlay}>
-                      <div className={styles.addToWishlist}>Wishlist</div>
+                      <Button className={styles.addToWishlist}>Wishlist</Button>
                     </div>
                   </div>
                 </div>
@@ -78,3 +88,20 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export async function getServerSideProps(context: any) {
+  const { query } = context;
+  let data = [];
+  if (query.q) {
+    const res = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=${query.q}`
+    );
+    data = await res.json();
+  }
+  return {
+    props: {
+      books: data.items?.length ? data.items : [],
+      q: query.q ? query.q : '',
+    },
+  };
+}

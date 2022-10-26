@@ -21,7 +21,7 @@
 }
 
 .search {
-  margin: 64px auto;
+  margin: 64px auto 32px auto;
   width: 75%;
   max-width: 600px;
   display: flex;
@@ -35,6 +35,12 @@
     background: rgba(255, 255, 255, 0.25);
     box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
     outline: none;
+    transition: all .3s ease;
+
+    &:focus {
+      background-color: #f3f3f3;
+      box-shadow: rgb(166 113 179) 0px 8px 48px;
+    }
   }
 
   .searchBtn {
@@ -134,20 +140,21 @@
 .addToWishlist {
   background: #8f00ff;
   border: none;
-  padding: 14px 32px;
+  padding: 8px 32px;
   border-radius: 12px;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: #ffffff;
+  color: #ffffff !important;
   transition: all 0.3s ease;
   box-shadow: 0 4px 24px #003d9540;
 
   &:hover {
     transform: scale(1.1) rotate(-6deg);
     box-shadow: 0 4px 48px #003e9590;
+    color: #454545 !important;
   }
 }
 
